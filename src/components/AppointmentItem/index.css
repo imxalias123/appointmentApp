@@ -1,0 +1,31 @@
+/* Write your CSS here */
+li {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid #b5b7c4;
+  width: 230px;
+  height: 100px;
+  border-radius: 10px;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.star {
+  height: 20px;
+}
+.title-h1 {
+  font-family: 'roboto';
+  font-size: 20px;
+}
+
+.date-text {
+  font-size: 13px;
+  color: #b5b7c4;
+}
