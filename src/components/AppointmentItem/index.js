@@ -21,13 +21,11 @@ const AppointmentItem = props => {
           onClick={onClickFavorite}
           className="star"
           src={isFavoriteImg}
-          alt="like"
+          data-testid="star"
+          alt="star"
         />
       </div>
-      <p className="date-text">
-        Date:{}
-        {date}
-      </p>
+      <p className="date-text">Date: {date}</p>
     </li>
   )
 }
