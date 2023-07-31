@@ -48,6 +48,7 @@ class Appointments extends Component {
 
   render() {
     const {appointmentList} = this.state
+    const {title, date} = appointmentList
     return (
       <div className="bg-container">
         <div className="card-container">
@@ -56,6 +57,7 @@ class Appointments extends Component {
             <div>
               <p className="label">TITLE</p>
               <input
+                value={title}
                 type="text"
                 className="text"
                 placeholder="Title"
@@ -64,6 +66,7 @@ class Appointments extends Component {
               <p className="label">DATE</p>
               <input
                 type="date"
+                value={date}
                 className="date"
                 onChange={this.onChangeDate}
               />
