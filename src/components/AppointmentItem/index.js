@@ -16,14 +16,10 @@ const AppointmentItem = props => {
   return (
     <li>
       <div className="flex">
-        <h1 className="title-h1">{title}</h1>
-        <img
-          onClick={onClickFavorite}
-          className="star"
-          src={isFavoriteImg}
-          data-testid="star"
-          alt="star"
-        />
+        <p className="title-h1">{title}</p>
+        <button type="button" data-testid="star" onClick={onClickFavorite}>
+          <img className="star" src={isFavoriteImg} alt="star" />
+        </button>
       </div>
       <p className="date-text">Date: {date}</p>
     </li>
