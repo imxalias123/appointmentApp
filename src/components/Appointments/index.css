@@ -81,6 +81,11 @@
   display: flex;
   flex-direction: column;
 }
+.filled {
+  background-color: #8b5cf6;
+  color: white;
+  border: 1px solid #8b5cf6;
+}
 @media (min-width: 769px) {
   .bottom-container {
     display: flex;

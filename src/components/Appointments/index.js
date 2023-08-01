@@ -10,7 +10,7 @@ class Appointments extends Component {
     appointmentList: [],
     title: '',
     date: '',
-    isFavorite: false,
+    isFilterActive: false,
   }
 
   onChangeDate = event => {
@@ -59,8 +59,8 @@ class Appointments extends Component {
   }
 
   getFilteredAppointments = () => {
-    const {isFavorite, appointmentList} = this.state
-    if (isFavorite) {
+    const {isFilterActive, appointmentList} = this.state
+    if (isFilterActive) {
       return appointmentList.filter(
         eachAppointment => eachAppointment.isFavorite === true,
       )
@@ -70,9 +70,10 @@ class Appointments extends Component {
 
   render() {
     const {appointmentList} = this.state
-    const {title, date} = appointmentList
+    const {title, date, isFilterActive} = appointmentList
+    const filterClassName = isFilterActive ? 'filled' : ''
     const filteredAppointment = this.getFilteredAppointments()
-    console.log(format(new Date(date), 'dd MMMM yyyy, EEEE'))
+
     return (
       <div className="bg-container">
         <div className="card-container">
@@ -114,7 +115,11 @@ class Appointments extends Component {
           <hr className="hr-line" />
           <div className="flex-container">
             <h1 className="result-heading">Appointments</h1>
-            <button className="favBtn" type="button" onClick={this.onFilter}>
+            <button
+              className={`favBtn ${filterClassName}`}
+              type="button"
+              onClick={this.onFilter}
+            >
               Starred
             </button>
           </div>
