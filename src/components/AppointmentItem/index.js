@@ -17,7 +17,12 @@ const AppointmentItem = props => {
     <li>
       <div className="flex">
         <p className="title-h1">{title}</p>
-        <button type="button" data-testid="star" onClick={onClickFavorite}>
+        <button
+          className="star-btn"
+          type="button"
+          data-testid="star"
+          onClick={onClickFavorite}
+        >
           <img className="star" src={isFavoriteImg} alt="star" />
         </button>
       </div>

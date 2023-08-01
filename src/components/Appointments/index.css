@@ -12,6 +12,7 @@
   border-radius: 8px;
   padding: 20px;
   width: 90%;
+
   margin: 10px;
 }
 .heading {
@@ -86,11 +87,21 @@
   color: white;
   border: 1px solid #8b5cf6;
 }
+.img {
+  display: none;
+}
 @media (min-width: 769px) {
   .bottom-container {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     flex-wrap: wrap;
+  }
+  .flex {
+    display: flex;
+  }
+  .img {
+    display: flex;
+    height: 200px;
   }
 }

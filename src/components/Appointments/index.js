@@ -29,14 +29,14 @@ class Appointments extends Component {
       : ''
     const newAppointment = {
       title,
-      date,
+      date: formattedData,
       isFavorite: false,
       id: v4(),
     }
     this.setState(prevState => ({
       appointmentList: [...prevState.appointmentList, newAppointment],
       title: '',
-      date: formattedData,
+      date: '',
     }))
   }
 
@@ -77,8 +77,8 @@ class Appointments extends Component {
     return (
       <div className="bg-container">
         <div className="card-container">
-          <div>
-            <h1 className="heading">Add Appointment</h1>
+          <h1 className="heading">Add Appointment</h1>
+          <div className="flex">
             <form className="form" onSubmit={this.onAddAppointment}>
               <label htmlFor="title" className="label">
                 TITLE
@@ -107,6 +107,7 @@ class Appointments extends Component {
               </button>
             </form>
             <img
+              className="img"
               alt="appointments"
               src="https://assets.ccbp.in/frontend/react-js/appointments-app/appointments-img.png"
             />
