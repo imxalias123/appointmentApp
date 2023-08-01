@@ -1,6 +1,6 @@
 // Write your code here
 import './index.css'
-import {v4 as uuidv4} from 'uuid'
+import {v4} from 'uuid'
 import {format} from 'date-fns'
 import {Component} from 'react'
 import AppointmentsItem from '../AppointmentItem'
@@ -10,6 +10,7 @@ class Appointments extends Component {
     appointmentList: [],
     title: '',
     date: '',
+    isFavorite: false,
   }
 
   onChangeDate = event => {
@@ -23,16 +24,19 @@ class Appointments extends Component {
   onAddAppointment = event => {
     event.preventDefault()
     const {title, date} = this.state
+    const formattedData = date
+      ? format(new Date(date), 'dd MMMM yyyy, EEEE')
+      : ''
     const newAppointment = {
       title,
       date,
       isFavorite: false,
-      id: uuidv4(),
+      id: v4(),
     }
     this.setState(prevState => ({
       appointmentList: [...prevState.appointmentList, newAppointment],
       title: '',
-      date: '',
+      date: formattedData,
     }))
   }
 
@@ -47,9 +51,27 @@ class Appointments extends Component {
     }))
   }
 
+  onFilter = () => {
+    const {isFavorite} = this.state
+    this.setState({
+      isFavorite: !isFavorite,
+    })
+  }
+
+  getFilteredAppointments = () => {
+    const {isFavorite, appointmentList} = this.state
+    if (isFavorite) {
+      return appointmentList.filter(
+        eachAppointment => eachAppointment.isFavorite === true,
+      )
+    }
+    return appointmentList
+  }
+
   render() {
     const {appointmentList} = this.state
     const {title, date} = appointmentList
+    const filteredAppointment = this.getFilteredAppointments()
     console.log(format(new Date(date), 'dd MMMM yyyy, EEEE'))
     return (
       <div className="bg-container">
@@ -92,12 +114,12 @@ class Appointments extends Component {
           <hr className="hr-line" />
           <div className="flex-container">
             <h1 className="result-heading">Appointments</h1>
-            <button className="favBtn" type="button">
+            <button className="favBtn" type="button" onClick={this.onFilter}>
               Starred
             </button>
           </div>
           <ul className="bottom-container">
-            {appointmentList.map(each => (
+            {filteredAppointment.map(each => (
               <AppointmentsItem
                 key={each.id}
                 updateFavorite={this.isFav}
