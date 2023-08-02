@@ -2,8 +2,8 @@
 import './index.css'
 
 const AppointmentItem = props => {
-  const {appointmentDetails, updateFavorite} = props
-  const {title, date, id, isFavorite} = appointmentDetails
+  const {appointmentDetails, id, updateFavorite} = props
+  const {isFavorite, title, date} = appointmentDetails
 
   const onClickFavorite = () => {
     updateFavorite(id)

@@ -52,9 +52,9 @@ class Appointments extends Component {
   }
 
   onFilter = () => {
-    const {isFavorite} = this.state
+    const {isFilterActive} = this.state
     this.setState({
-      isFavorite: !isFavorite,
+      isFilterActive: !isFilterActive,
     })
   }
 
@@ -69,9 +69,9 @@ class Appointments extends Component {
   }
 
   render() {
-    const {appointmentList} = this.state
-    const {title, date, isFilterActive} = appointmentList
-    const filterClassName = isFilterActive ? 'filled' : ''
+    const {appointmentList, title, date} = this.state
+    const {isFilterActive} = appointmentList
+    const filterClassName = isFilterActive ? 'filled' : 'favBtn'
     const filteredAppointment = this.getFilteredAppointments()
 
     return (
@@ -117,7 +117,7 @@ class Appointments extends Component {
           <div className="flex-container">
             <h1 className="result-heading">Appointments</h1>
             <button
-              className={`favBtn ${filterClassName}`}
+              className={filterClassName}
               type="button"
               onClick={this.onFilter}
             >
