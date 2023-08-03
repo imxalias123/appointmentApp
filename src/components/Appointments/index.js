@@ -128,6 +128,7 @@ class Appointments extends Component {
             {filteredAppointment.map(each => (
               <AppointmentsItem
                 key={each.id}
+                id={each.id}
                 updateFavorite={this.isFav}
                 appointmentDetails={each}
               />
