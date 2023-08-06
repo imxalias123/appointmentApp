@@ -69,8 +69,8 @@ class Appointments extends Component {
   }
 
   render() {
-    const {appointmentList, title, date} = this.state
-    const {isFilterActive} = appointmentList
+    const {appointmentList, isFilterActive, title, date} = this.state
+
     const filterClassName = isFilterActive ? 'filled' : 'favBtn'
     const filteredAppointment = this.getFilteredAppointments()
 
